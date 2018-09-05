@@ -8,23 +8,7 @@ public class News {
     private String author;
     private String date;
 
-    //Constructors
-    public News(String title) {
-        this.title = title;
-    }
-
-    public News(String title, String url) {
-        this.title = title;
-        this.url = url;
-    }
-
-    public News(String title, String section, String url, String date) {
-        this.title = title;
-        this.section = section;
-        this.url = url;
-        this.date = date;
-    }
-
+    //Constructor
     public News(String title, String section, String url, String author, String date) {
         this.title = title;
         this.section = section;

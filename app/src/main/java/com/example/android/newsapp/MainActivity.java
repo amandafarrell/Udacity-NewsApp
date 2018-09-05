@@ -20,13 +20,11 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<News>> {
 
-    private static final String apiKey = "a17c96b7-31ce-4036-91e1-fec32f418fa9";
-
     /**
      * URL for news data from The Guardian api
      */
     private static final String GUARDIAN_REQUEST_URL =
-            "http://content.guardianapis.com/search?q=technology&api-key=" + apiKey;
+            "http://content.guardianapis.com/search?q=technology&show-tags=contributor&api-key=";
 
     private TextView emptyView;
     private ProgressBar progressBar;
@@ -89,7 +87,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public Loader<List<News>> onCreateLoader(int i, Bundle bundle) {
-        return new NewsLoader(this, GUARDIAN_REQUEST_URL);
+        String requestUrl = GUARDIAN_REQUEST_URL + this.getResources().getString(R.string.API_KEY);
+        return new NewsLoader(this, requestUrl);
     }
 
     @Override

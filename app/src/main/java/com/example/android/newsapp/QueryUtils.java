@@ -156,7 +156,15 @@ public final class QueryUtils {
                 String url = currentNewsResult.getString("webUrl");
                 String date = currentNewsResult.getString("webPublicationDate");
 
-                news.add(new News(title, section, url, date));
+                JSONArray tagsArray = currentNewsResult.getJSONArray("tags");
+
+                String author = "";
+                if (tagsArray.length() != 0){
+                    JSONObject tags = tagsArray.getJSONObject(0);
+                    author = tags.getString("webTitle");
+                }
+
+                news.add(new News(title, section, url, author, date));
             }
 
         } catch (JSONException e) {

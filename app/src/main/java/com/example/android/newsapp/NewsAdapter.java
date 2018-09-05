@@ -36,13 +36,23 @@ public class NewsAdapter extends ArrayAdapter<News> {
 
         News currentNewsArticle = getItem(position);
 
+        String currentSection = currentNewsArticle.getSection();
+        TextView sectionTextView = (TextView) convertView.findViewById(R.id.section);
+        sectionTextView.setText(currentSection);
+
         String currentTitle = currentNewsArticle.getTitle();
         TextView titleTextView = (TextView) convertView.findViewById(R.id.title);
         titleTextView.setText(currentTitle);
 
-        String currentSection = currentNewsArticle.getSection();
-        TextView sectionTextView = (TextView) convertView.findViewById(R.id.section);
-        sectionTextView.setText(currentSection);
+        String currentAuthor = currentNewsArticle.getAuthor();
+        TextView authorTextView = (TextView) convertView.findViewById(R.id.author);
+
+        //hide the author TextView if there is no author to display
+        if (currentAuthor.isEmpty()){
+            authorTextView.setVisibility(View.GONE);
+        } else {
+            authorTextView.setText(currentAuthor);
+        }
 
         String currentDate = formatDate(currentNewsArticle.getDate());
         TextView dateTextView = (TextView) convertView.findViewById(R.id.date);
