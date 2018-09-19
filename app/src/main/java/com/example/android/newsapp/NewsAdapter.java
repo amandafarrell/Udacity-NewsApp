@@ -68,11 +68,11 @@ public class NewsAdapter extends ArrayAdapter<News> {
     /* Return the formatted date string (i.e. "Mar 3, 1984") from a string.
      */
     private String formatDate(String webPublicationDate) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd'T'hh:mm:ss'Z'");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'");
 
         try {
             Date date = dateFormat.parse(webPublicationDate);
-            dateFormat.applyPattern("LLL dd, yyyy");
+            dateFormat.applyPattern("MMM dd, yyyy");
             return dateFormat.format(date);
         } catch (ParseException e) {
             Log.e(LOG_TAG, "Problem parsing date", e);
@@ -83,7 +83,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
     /* Return the formatted time string (i.e. "10:30 AM") from a string.
      */
     private String formatTime(String webPublicationDate) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd'T'hh:mm:ss'Z'");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'");
 
         try {
             Date time = dateFormat.parse(webPublicationDate);
